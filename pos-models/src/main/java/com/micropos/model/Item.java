@@ -11,7 +11,7 @@ public class Item implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getProduct() {
+    public String getProductId() {
         return productId;
     }
 

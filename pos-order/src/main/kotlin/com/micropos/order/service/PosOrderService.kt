@@ -6,12 +6,16 @@ import com.micropos.model.Order
 import com.micropos.model.OrderStatus
 import com.micropos.order.repository.OrderRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cloud.stream.function.StreamBridge
 import org.springframework.stereotype.Service
 
 @Service
 class PosOrderService : OrderService {
     @Autowired
     lateinit var orderRepository: OrderRepository
+
+    @Autowired
+    lateinit var streamBridge: StreamBridge
 
     override fun getAllOrders(): List<Order> {
         return orderRepository.getAllOrders().toList()
@@ -25,9 +29,11 @@ class PosOrderService : OrderService {
         val order = Order(
             orderRepository.getNextOrderId(),
             items.map { Item(it.product, it.quantity.intValueExact()) },
-            OrderStatus.Pending,
+            OrderStatus.ToSend,
         )
         orderRepository.saveOrder(order)
+
+        streamBridge.send("order-consumer", order)
         return order
     }
 

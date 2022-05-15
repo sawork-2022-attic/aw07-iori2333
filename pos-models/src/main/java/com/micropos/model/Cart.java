@@ -1,14 +1,10 @@
 package com.micropos.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cart implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 114514L;
-
     private final List<Item> items = new ArrayList<>();
 
     public List<Item> getItems() {
@@ -21,7 +17,7 @@ public class Cart implements Serializable {
 
     public void addItem(Item item) {
         items.stream()
-            .filter(it -> it.getProduct().equals(item.getProduct()))
+            .filter(it -> it.getProductId().equals(item.getProductId()))
             .findAny()
             .ifPresentOrElse(
                 it -> it.setQuantity(it.getQuantity() + item.getQuantity()),
@@ -31,7 +27,7 @@ public class Cart implements Serializable {
 
     public void removeItem(Item item) {
         items.stream()
-            .filter(it -> it.getProduct().equals(item.getProduct()))
+            .filter(it -> it.getProductId().equals(item.getProductId()))
             .findAny()
             .ifPresent(it -> {
                 if (it.getQuantity() > item.getQuantity()) {
@@ -44,7 +40,7 @@ public class Cart implements Serializable {
 
     public void modifyItem(Item item) {
         items.stream()
-            .filter(it -> it.getProduct().equals(item.getProduct()))
+            .filter(it -> it.getProductId().equals(item.getProductId()))
             .findAny()
             .ifPresentOrElse(
                 it -> it.setQuantity(item.getQuantity()),

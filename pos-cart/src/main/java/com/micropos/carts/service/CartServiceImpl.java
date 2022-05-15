@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService {
     public Item getItem(String id) {
         return getCart().getItems()
             .stream()
-            .filter(item -> item.getProduct().equals(id))
+            .filter(item -> item.getProductId().equals(id))
             .findFirst()
             .orElse(null);
     }
@@ -45,7 +45,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart modifyItem(Item item) {
         if (item.getQuantity() <= 0) {
-            return removeItem(item.getProduct());
+            return removeItem(item.getProductId());
         }
         cartRepository.modifyItem(item);
         return getCart();

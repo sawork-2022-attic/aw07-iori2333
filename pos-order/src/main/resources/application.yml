@@ -1,6 +1,18 @@
 spring:
   application:
     name: pos-order
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+  cloud:
+    stream:
+      bindings:
+        order-provider:
+          binder: rabbit
+          destination: order-handler
+          group: default
 
 server:
   port: 8083

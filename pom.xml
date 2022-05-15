@@ -11,6 +11,7 @@
         <module>pos-gateway</module>
         <module>pos-order</module>
         <module>pos-counter</module>
+        <module>pos-delivery</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

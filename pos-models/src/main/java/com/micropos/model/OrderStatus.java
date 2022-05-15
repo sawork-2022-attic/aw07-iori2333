@@ -1,8 +1,11 @@
 package com.micropos.model;
 
-public enum OrderStatus {
-    Pending,
-    Processing,
+import java.io.Serializable;
+
+public enum OrderStatus implements Serializable {
+    ToSend,
+    ToCancel,
+    Delivering,
     Completed,
-    Cancelled
+    Canceled
 }

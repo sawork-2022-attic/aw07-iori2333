@@ -156,15 +156,13 @@ paths:
     post:
       summary: Add a new order
       operationId: createOrder
-      parameters:
-        - name: items
-          in: header
-          description: Items
-          required: true
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Item'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Item'
       responses:
         '200':
           description: Successful operation
@@ -301,6 +299,41 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /checkout:
+    post:
+      summary: Calculate the total price of the order
+      operationId: calculateOrderTotal
+      tags:
+        - checkout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CheckoutRequest"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    format: double
+        '400':
+          description: Invalid order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Item:
@@ -361,3 +394,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Product"
+    CheckoutItem:
+      type: object
+      required:
+        - quantity
+        - price
+      properties:
+        quantity:
+          type: integer
+          format: int32
+        price:
+          type: number
+          format: double
+    CheckoutRequest:
+      type: array
+      items:
+        $ref: "#/components/schemas/CheckoutItem"

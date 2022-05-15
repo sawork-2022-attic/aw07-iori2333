@@ -22,7 +22,11 @@ spring:
           predicates:
             - Path=/api/order/**
             - Method=[GET, POST, PUT, DELETE]
-
+        - id: pos-counter-service
+          uri: lb://pos-counter
+          predicates:
+            - Path=/api/counter/**
+            - Method=[POST]
 server:
   port: 8080
 

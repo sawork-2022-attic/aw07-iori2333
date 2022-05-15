@@ -11,4 +11,6 @@ sealed interface DeliveryService {
     fun updateDelivery(deliveryRecord: DeliveryRecord): DeliveryRecord?
 
     fun cancelDelivery(order: Order): DeliveryRecord?
+
+    fun getAllDeliveries(): List<DeliveryRecord>
 }

@@ -7,12 +7,20 @@ spring:
     username: root
     password: root
   cloud:
+    function:
+      definition: onOrdering
     stream:
+      function:
+        bindings:
+          onOrdering-in-0: order
+      rabbit:
+        bindings:
+          order:
+            consumer:
+              declare-exchange: false
       bindings:
-        order-consumer:
-          binder: rabbit
-          destination: order-handler
-          group: default
+        orderCreated:
+          destination: order
 
 server:
   port: 8085

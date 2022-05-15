@@ -349,12 +349,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DeliveryRecord'
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /delivery/{orderId}:
     get:
       summary: Get the delivery info for a specific order
@@ -392,10 +386,10 @@ components:
     Item:
       type: object
       required:
-        - product
+        - productId
         - quantity
       properties:
-        product:
+        productId:
           type: string
         quantity:
           type: number

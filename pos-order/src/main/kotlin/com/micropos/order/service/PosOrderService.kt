@@ -28,12 +28,12 @@ class PosOrderService : OrderService {
     override fun createOrder(items: List<ItemDto>): Order {
         val order = Order(
             orderRepository.getNextOrderId(),
-            items.map { Item(it.product, it.quantity.intValueExact()) },
+            items.map { Item(it.productId, it.quantity.intValueExact()) },
             OrderStatus.ToSend,
         )
         orderRepository.saveOrder(order)
 
-        streamBridge.send("order-consumer", order)
+        streamBridge.send("ordering", order)
         return order
     }
 
@@ -41,7 +41,7 @@ class PosOrderService : OrderService {
         val order = orderRepository.getOrderById(id) ?: return null
         val newOrder = Order(
             order.id,
-            items.map { Item(it.product, it.quantity.intValueExact()) },
+            items.map { Item(it.productId, it.quantity.intValueExact()) },
             order.status,
         )
         orderRepository.saveOrder(newOrder)

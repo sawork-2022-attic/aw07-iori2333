@@ -27,6 +27,11 @@ spring:
           predicates:
             - Path=/api/counter/**
             - Method=[POST]
+        - id: pos-delivery-service
+          uri: lb://pos-delivery
+          predicates:
+            - Path=/api/delivery/**
+            - Method=[GET, POST, PUT, DELETE]
 server:
   port: 8080
 

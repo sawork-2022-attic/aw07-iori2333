@@ -4,9 +4,9 @@ import com.micropos.delivery.repository.DeliveryRepository
 import com.micropos.model.DeliveryRecord
 import com.micropos.model.Order
 import com.micropos.model.OrderStatus
-import org.apache.tomcat.jni.Time
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.Date
 
 @Service
 class KoujiDeliveryService : DeliveryService {
@@ -19,7 +19,7 @@ class KoujiDeliveryService : DeliveryService {
 
     override fun createDelivery(order: Order): DeliveryRecord {
         order.status = OrderStatus.Delivering
-        val record = DeliveryRecord(order.id, "Kouji is delivering", Time.now())
+        val record = DeliveryRecord(order.id, "Kouji is delivering", Date().time)
         return deliveryRepository.saveRecord(record)
     }
 
@@ -32,5 +32,9 @@ class KoujiDeliveryService : DeliveryService {
     override fun cancelDelivery(order: Order): DeliveryRecord? {
         order.status = OrderStatus.Canceled
         return deliveryRepository.deleteRecordByOrderId(order.id)
+    }
+
+    override fun getAllDeliveries(): List<DeliveryRecord> {
+        return deliveryRepository.findAllRecords()
     }
 }

@@ -1,9 +1,9 @@
 package com.micropos.order.service
 
-import com.micropos.carts.dto.ItemDto
-import com.micropos.carts.model.Item
-import com.micropos.order.model.Order
-import com.micropos.order.model.OrderStatus
+import com.micropos.dto.ItemDto
+import com.micropos.model.Item
+import com.micropos.model.Order
+import com.micropos.model.OrderStatus
 import com.micropos.order.repository.OrderRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

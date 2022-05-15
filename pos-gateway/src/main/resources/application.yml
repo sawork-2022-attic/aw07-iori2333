@@ -13,7 +13,7 @@ spring:
             - Path=/api/products/**
             - Method=GET
         - id: pos-carts-service
-          uri: lb://pos-carts
+          uri: lb://pos-cart
           predicates:
             - Path=/api/cart/**
             - Method=[GET, POST, PUT, DELETE]

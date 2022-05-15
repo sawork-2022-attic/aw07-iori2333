@@ -1,9 +1,9 @@
 package com.micropos.carts.rest;
 
-import com.micropos.carts.api.CartApi;
-import com.micropos.carts.dto.ItemDto;
-import com.micropos.carts.mapper.CartMapper;
-import com.micropos.carts.model.Item;
+import com.micropos.api.CartApi;
+import com.micropos.dto.ItemDto;
+import com.micropos.mapper.CartMapper;
+import com.micropos.model.Item;
 import com.micropos.carts.service.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

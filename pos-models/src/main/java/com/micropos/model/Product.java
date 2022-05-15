@@ -1,4 +1,4 @@
-package com.micropos.products.model;
+package com.micropos.model;
 
 import java.io.Serializable;
 

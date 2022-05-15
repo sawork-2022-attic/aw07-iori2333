@@ -1,8 +1,8 @@
 package com.micropos.order.service
 
-import com.micropos.carts.dto.ItemDto
-import com.micropos.order.model.Order
-import com.micropos.order.model.OrderStatus
+import com.micropos.dto.ItemDto
+import com.micropos.model.Order
+import com.micropos.model.OrderStatus
 
 sealed interface OrderService {
     fun getAllOrders(): List<Order>

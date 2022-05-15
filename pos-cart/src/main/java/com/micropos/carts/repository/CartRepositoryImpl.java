@@ -1,7 +1,7 @@
 package com.micropos.carts.repository;
 
-import com.micropos.carts.model.Cart;
-import com.micropos.carts.model.Item;
+import com.micropos.model.Cart;
+import com.micropos.model.Item;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,12 +1,12 @@
-package com.micropos.products.mapper;
+package com.micropos.mapper;
 
-import com.micropos.products.dto.ProductDto;
-import com.micropos.products.model.Product;
+import com.micropos.dto.ProductDto;
+import com.micropos.model.Product;
 import org.mapstruct.Mapper;
 
 import java.util.Collection;
 
-@Mapper
+@Mapper(implementationPackage = "com.micropos.products.mapper")
 public interface ProductMapper {
 
     Collection<ProductDto> toProductsDto(Collection<Product> products);

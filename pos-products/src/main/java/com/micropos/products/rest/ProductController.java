@@ -1,8 +1,8 @@
 package com.micropos.products.rest;
 
-import com.micropos.products.api.ProductsApi;
-import com.micropos.products.dto.ProductDto;
-import com.micropos.products.mapper.ProductMapper;
+import com.micropos.api.ProductsApi;
+import com.micropos.dto.ProductDto;
+import com.micropos.mapper.ProductMapper;
 import com.micropos.products.service.ProductService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -44,7 +44,7 @@ public class ProductController implements ProductsApi {
             name = "productId",
             description = "The id of the product to retrieve",
             required = true,
-            schema = @Schema(description = "")
+            schema = @Schema()
         )
         @PathVariable("productId") String productId) {
         var dto = productMapper.toProductDto(productService.getProduct(productId));

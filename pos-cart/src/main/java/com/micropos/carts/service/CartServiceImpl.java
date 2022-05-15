@@ -1,7 +1,7 @@
 package com.micropos.carts.service;
 
-import com.micropos.carts.model.Cart;
-import com.micropos.carts.model.Item;
+import com.micropos.model.Cart;
+import com.micropos.model.Item;
 import com.micropos.carts.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

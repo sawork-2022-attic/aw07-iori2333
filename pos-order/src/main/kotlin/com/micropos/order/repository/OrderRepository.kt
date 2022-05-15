@@ -1,6 +1,6 @@
 package com.micropos.order.repository
 
-import com.micropos.order.model.Order
+import com.micropos.model.Order
 
 sealed interface OrderRepository {
     fun getNextOrderId(): String

@@ -1,7 +1,7 @@
 package com.micropos.order.repository
 
-import com.micropos.order.model.Order
-import com.micropos.order.model.OrderStatus
+import com.micropos.model.Order
+import com.micropos.model.OrderStatus
 import org.springframework.stereotype.Repository
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.random.Random
@@ -36,12 +36,6 @@ class PosOrderRepository : OrderRepository {
     }
 
     override fun updateStatus(id: String, status: String) {
-        orders[id]?.copy(
-            status = try {
-                OrderStatus.valueOf(status)
-            } catch (e: IllegalArgumentException) {
-                OrderStatus.Unknown
-            }
-        )?.let { orders[id] = it }
+        orders[id]?.status = OrderStatus.valueOf(status)
     }
 }

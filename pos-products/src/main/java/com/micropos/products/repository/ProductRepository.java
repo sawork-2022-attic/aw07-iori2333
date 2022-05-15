@@ -1,7 +1,7 @@
 package com.micropos.products.repository;
 
 
-import com.micropos.products.model.Product;
+import com.micropos.model.Product;
 
 import java.util.List;
 

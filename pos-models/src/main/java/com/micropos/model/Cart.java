@@ -1,4 +1,4 @@
-package com.micropos.carts.model;
+package com.micropos.model;
 
 import java.io.Serial;
 import java.io.Serializable;

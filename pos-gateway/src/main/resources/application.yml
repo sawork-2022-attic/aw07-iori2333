@@ -17,6 +17,11 @@ spring:
           predicates:
             - Path=/api/cart/**
             - Method=[GET, POST, PUT, DELETE]
+        - id: pos-order-service
+          uri: lb://pos-order
+          predicates:
+            - Path=/api/order/**
+            - Method=[GET, POST, PUT, DELETE]
 
 server:
   port: 8080

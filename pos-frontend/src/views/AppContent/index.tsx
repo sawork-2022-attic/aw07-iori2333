@@ -22,7 +22,7 @@ function AppContent() {
       const cart = await fetchCart();
       const items = cart
         .map(dto => {
-          const product = products.find(p => p.id === dto.product);
+          const product = products.find(p => p.id === dto.productId);
           return {
             product,
             quantity: dto.quantity

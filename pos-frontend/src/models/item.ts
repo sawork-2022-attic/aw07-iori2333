@@ -1,7 +1,7 @@
 import { Product } from './product';
 
 export interface ItemDto {
-  product: string;
+  productId: string;
   quantity: number;
 }
 
